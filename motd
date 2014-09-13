@@ -1,0 +1,23 @@
+.=============================================================.
+|          ___                  ____ _                 _      |
+|         / _ \__      ___ __  / ___| | ___  _   _  __| |     |
+|        | | | \ \ /\ / / '_ \| |   | |/ _ \| | | |/ _` |     |
+|        | |_| |\ V  V /| | | | |___| | (_) | |_| | (_| |     |
+|         \___/  \_/\_/ |_| |_|\____|_|\___/ \__,_|\__,_|     |
+|     OwnCloud 7.02 ( 64bit)            http://owncloud.org   |
+.=============================================================.
+             SmartOS %brand% (%name% %version%)
+
+       OwnCloud Web Interface: https://%WEBUI_ADDRESS%
+       OwnCloud Postgres   DB: owncloud
+       OwnCloud Postgres USER: owncloudadmin
+       OwnCloud Postgres PASS: %ONC_PW%
+
+Note: Enter above Database Settings in Web UI to Complete the Install.
+
+>> AFTER << you have completed database setup in the web interface - run:
+
+sed -i "5i 'appstoreenabled' => false," /opt/local/www/owncloud/config/config.php 
+
+          <------ Feedback @trentster abn.me/owncloud ------>
+  

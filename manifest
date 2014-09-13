@@ -1,0 +1,7 @@
+name="owncloud"
+organization="Onyx"
+brand="Instance"
+version="7.0.2"
+description="Owncloud Private Storage Server. Setup with Postgres, Nginx and tuned for Owncloud"
+homepage="http://abn.me/owncloud"
+users="root admin pgsql"

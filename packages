@@ -1,0 +1,27 @@
+# List packages to add to your image one per line.
+nginx
+php55-mcrypt
+php55-mbstring
+unzip
+php55-zlib
+php55-zip
+php55-gd
+php55-curl
+php55-imap
+php55-json
+php55-pgsql
+php55-pdo_pgsql
+php55-bcmath
+php55-fpm
+php55-dom
+php55-xmlrpc
+php55-memcached
+memcached
+postgresql93-server
+php55-iconv
+php55-bz2
+php55-intl
+php55-gmp
+php55-exif
+php55-ldap
+php55-opcache

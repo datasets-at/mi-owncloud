@@ -1,0 +1,43 @@
+#!/usr/bin/bash
+#
+# Put customizations to your image in this file.
+
+PATH=/opt/local/gnu/bin:/opt/local/bin:/opt/local/sbin:/usr/bin:/usr/sbin
+
+# Exit if any commands fail
+set -o errexit
+
+# Ensure we have updated standard packages
+echo "* Updating standard packages.";
+pkg_delete -v nodejs smtools zoneinit
+pkg_add -v nodejs smtools zoneinit
+
+# Configuring image specific packages
+echo "* Configuring image specific packages.";
+
+mkdir -p /opt/local/etc/nginx/sites-enabled
+mkdir -p /opt/local/etc/nginx/sites-available
+mkdir -p /var/db/ssl/certs
+mkdir -p /opt/local/www
+
+# build owncloud
+echo "* Installing Owncloud.";
+cd /opt/local/www
+wget --no-check-certificate https://download.owncloud.org/community/owncloud-7.0.2.tar.bz2
+tar -xvjf owncloud-7.0.2.tar.bz2
+rm /opt/local/www/owncloud-7.0.2.tar.bz2
+
+cp /root/nginx.conf /opt/local/etc/nginx/nginx.conf
+cp /root/php.ini /opt/local/etc/php.ini
+cp /root/php-fpm.conf /opt/local/etc/php-fpm.conf
+
+chown -R www:www /opt/local/etc/nginx
+chown -R www:www /var/db/ssl
+chown -R www:www /opt/local/www
+
+# Clean up
+echo "* Cleaning up."
+rm -rf /root/*
+
+# Prepare image for provisioning
+sm-prepare-image -y
